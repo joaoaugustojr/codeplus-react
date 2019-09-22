@@ -1,0 +1,88 @@
+body {
+	background: #565656 !important;
+}
+
+.loginBox {
+	width: 380px;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+}
+
+.codePlusLogo {
+	background: #9613b3;
+	height: 120px;
+	width: 100%;
+	border: none;
+	padding: 20px;
+	margin-bottom: 50px;
+}
+
+.codePlusLogo > img {
+	height: 100%;
+	position: relative;
+}
+
+.dropIcon {
+	font-size: 50px;
+	position: absolute;
+	top: 100px;
+	color: #9613b3;
+	left: 44%;
+}
+
+.formLogin {
+	width: 100%;
+	padding: 0 20px;
+}
+
+.groupInput > input {
+	width: 88%;
+	margin: 0;
+	clear: both;
+	background: #e9e9e9;
+	border: none;
+	height: 37px;
+	outline: 0 !important;
+	text-indent: 20px;
+	padding: 0;
+}
+
+.iconLogin {
+	width: 12%;
+	height: 37px;
+	display: inline-grid;
+	background: #9613b3;
+	color: #fff;
+	text-align: center;
+	align-content: center;
+	justify-content: center;
+}
+
+.groupInput {
+	display: inline-flex;
+	width: 100%;
+	margin-bottom: 12px;
+}
+
+.iconLogin > ion-icon {
+	font-size: 22px;
+}
+
+.btnLogin {
+	width: 100%;
+	border: none !important;
+	height: 37px;
+	color: #fff;
+	background: #9613b3;
+	margin-top: 60px;
+}
+
+.textSuport {
+	margin-bottom: 25px;
+}
+
+.buttons {
+	padding: 0 20px;
+}
