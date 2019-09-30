@@ -1,21 +1,22 @@
 import React, { useState } from 'react';
 import Alert from 'react-s-alert';
+import { loginStart } from '../auth';
 
 const Login = () => {
-	const [ store_id, setStoreId ] = useState('');
+	const [ estabelecimento_id, setEstabelecimento ] = useState('');
 	const [ login, setLogin ] = useState('');
-	const [ password, setPassword ] = useState('');
+	const [ senha, setSenha ] = useState('');
 
 	function onChange(ev) {
-		if (ev.target.name === 'store_id') setStoreId(ev.target.value);
+		if (ev.target.name === 'estabelecimento_id') setEstabelecimento(ev.target.value);
 		if (ev.target.name === 'login') setLogin(ev.target.value);
-		if (ev.target.name === 'password') setPassword(ev.target.value);
+		if (ev.target.name === 'senha') setSenha(ev.target.value);
 	}
 
 	function validarUsuario() {
 		var error = false;
 
-		if (store_id === '') {
+		if (estabelecimento_id === '') {
 			Alert.warning('O campo Estabelecimento deve ser preenchido!');
 			error = true;
 		}
@@ -25,12 +26,14 @@ const Login = () => {
 			error = true;
 		}
 
-		if (password === '') {
+		if (senha === '') {
 			Alert.warning('O campo Senha deve ser preenchido!');
 			error = true;
 		}
 
-		// !error ? verificarUsuario() : null;
+		if (!error) {
+			loginStart(estabelecimento_id, login, senha);
+		}
 	}
 
 	return (
@@ -48,8 +51,8 @@ const Login = () => {
 					</div>
 					<input
 						type="number"
-						name="store_id"
-						value={store_id}
+						name="estabelecimento_id"
+						value={estabelecimento_id}
 						onChange={onChange}
 						placeholder="Código do Estabelecimento"
 					/>
@@ -64,7 +67,7 @@ const Login = () => {
 					<div className="iconLogin">
 						<ion-icon name="key" />
 					</div>
-					<input type="password" name="password" value={password} onChange={onChange} placeholder="Senha" />
+					<input type="password" name="senha" value={senha} onChange={onChange} placeholder="Senha" />
 				</div>
 			</form>
 

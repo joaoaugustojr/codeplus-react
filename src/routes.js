@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
 import { isAuthenticated } from './auth';
 
 import Home from './pages/home';
+import Dashboard from './pages/dashboard';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
 	return (
@@ -12,13 +13,22 @@ const PrivateRoute = ({ component: Component, ...rest }) => {
 		/>
 	);
 };
+const HomeLogin = ({ component: Component, ...rest }) => {
+	return (
+		<Route
+			{...rest}
+			render={(props) =>
+				isAuthenticated() ? <Redirect to={{ pathname: '/dashboard' }} /> : <Component {...props} />}
+		/>
+	);
+};
 
 const Routes = () => {
 	return (
 		<BrowserRouter>
 			<Switch>
-				<Route exact path="/" component={Home} />
-				<PrivateRoute exact path="/dashboard" component={() => <h1>Olá Mundo</h1>} />
+				<HomeLogin exact path="/" component={Home} />
+				<PrivateRoute exact path="/dashboard" component={Dashboard} />
 			</Switch>
 		</BrowserRouter>
 	);
