@@ -4,6 +4,7 @@ import { isAuthenticated } from './auth';
 
 import Home from './pages/home';
 import Dashboard from './pages/dashboard';
+import Usuarios from './pages/users';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
 	return (
@@ -29,6 +30,7 @@ const Routes = () => {
 			<Switch>
 				<HomeLogin exact path="/" component={Home} />
 				<PrivateRoute exact path="/dashboard" component={Dashboard} />
+				<PrivateRoute exact path="/dashboard/usuarios" component={Usuarios} />
 			</Switch>
 		</BrowserRouter>
 	);

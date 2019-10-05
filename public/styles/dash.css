@@ -1,3 +1,7 @@
+.dashContent {
+	background: white;
+}
+
 .navBarBG {
 	background: #757575;
 	padding: 0.5rem 1rem;
@@ -103,4 +107,32 @@
 
 select {
 	-webkit-appearance: none;
+}
+
+#breadcrumbs {
+	background: #cb62cc;
+	margin-top: 10px;
+	padding: 10px;
+	color: white;
+	padding-left: 20px;
+	margin-bottom: 3rem;
+}
+
+.headerTable {
+	display: flex;
+	margin-bottom: 2rem;
+	/* padding: 0 20px; */
+}
+
+.headerTable > button {
+	border: none;
+	height: 38px;
+	padding: 0 10px;
+	margin-right: 2rem;
+	background: #cb62cc;
+	color: white;
+}
+
+.headerTable > button:hover {
+	background: #d485d1 !important;
 }

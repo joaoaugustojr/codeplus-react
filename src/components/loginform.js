@@ -13,7 +13,7 @@ const Login = () => {
 		if (ev.target.name === 'senha') setSenha(ev.target.value);
 	}
 
-	function validarUsuario() {
+	async function validarUsuario() {
 		var error = false;
 
 		if (estabelecimento_id === '') {
@@ -32,7 +32,8 @@ const Login = () => {
 		}
 
 		if (!error) {
-			loginStart(estabelecimento_id, login, senha);
+			await loginStart(estabelecimento_id, login, senha);
+			window.location.href = '/dashboard';
 		}
 	}
 
