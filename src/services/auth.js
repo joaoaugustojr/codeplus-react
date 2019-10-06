@@ -14,6 +14,7 @@ export const loginStart = async (estabelecimento_id, login, senha) => {
 			localStorage.setItem(AUTH_LOGIN, true);
 			localStorage.setItem(USER_LOGIN, JSON.stringify(res.data.user));
 			Alert.success(res.data.message);
+			window.location.href = '/dashboard';
 		} else {
 			Alert.error(res.data.message);
 		}
@@ -31,6 +32,7 @@ export const isAuth = async () => {
 		} else {
 			localStorage.removeItem(TOKEN_KEY);
 			localStorage.setItem(AUTH_LOGIN, false);
+			document.location.reload();
 		}
 	} catch (err) {
 		localStorage.removeItem(TOKEN_KEY);
@@ -39,7 +41,7 @@ export const isAuth = async () => {
 };
 
 export const isAuthenticated = () => {
-	const auth = localStorage.getItem(AUTH_LOGIN);
+	const auth = localStorage.getItem(TOKEN_KEY);
 	if (auth != null) {
 		return auth;
 	}
@@ -56,7 +58,19 @@ export const getUser = () => {
 	return user;
 };
 
-export const logoutStart = () => {
-	localStorage.removeItem(TOKEN_KEY);
-	localStorage.removeItem(AUTH_LOGIN);
+export const logoutStart = async () => {
+	try {
+		const res = await api.get('/auth/logout');
+		if (res.data.response) {
+			localStorage.removeItem(TOKEN_KEY);
+			localStorage.removeItem(AUTH_LOGIN);
+			localStorage.removeItem(USER_LOGIN);
+			Alert.success(res.data.message);
+			window.location.href = '/';
+		} else {
+			Alert.error(res.data.message);
+		}
+	} catch (err) {
+		Alert.error('Ocorreu um erro inesperado ao fazer logout:\n ' + err);
+	}
 };

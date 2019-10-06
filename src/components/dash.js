@@ -1,8 +1,16 @@
 import React from 'react';
-import { getUser, isAuth } from '../auth';
+import { getUser, isAuth, logoutStart } from '../services/auth';
+import { Confirm } from '../services/confirmDialog';
 
 const Dash = (props) => {
 	isAuth();
+
+	function logout() {
+		Confirm('Deseja Realmente Sair do CodePlus?', 'question', 'Sim', 'Não :)', () => {
+			logoutStart();
+		});
+	}
+
 	return (
 		<section className="container-fluid p-0 m-0">
 			<nav className="navbar navbar-expand-lg navBarBG">
@@ -70,6 +78,12 @@ const Dash = (props) => {
 							<ion-icon class="text-white" name="md-cog" />
 							<span>Configurações</span>
 						</a>
+					</li>
+					<li>
+						<span onClick={logout}>
+							<ion-icon class="text-white" name="md-exit" />
+							<span>Sair</span>
+						</span>
 					</li>
 				</ul>
 				<div className="dashContent container-fluid">

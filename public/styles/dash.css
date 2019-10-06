@@ -136,3 +136,45 @@ select {
 .headerTable > button:hover {
 	background: #d485d1 !important;
 }
+
+.menu > li > span {
+	padding: 15px;
+	text-align: left;
+	color: white;
+	position: relative;
+	text-decoration: none !important;
+	display: inline-flex;
+	width: 100%;
+	cursor: pointer;
+}
+
+.menu > li > span:hover {
+	background: #7e7c7c;
+}
+
+.menu > li > span > ion-icon {
+	font-size: 25px;
+}
+
+.menu > li > span > span {
+	font-size: 1.1rem;
+	margin-left: 1rem;
+}
+
+.btn-confirm {
+	background: #cb62cc;
+	border-radius: inherit;
+	color: white;
+	outline: none !important;
+	box-shadow: none !important;
+	margin-right: 1rem;
+}
+
+.btn-cancel {
+	background: #858585;
+	border-radius: inherit;
+	color: white;
+	outline: none !important;
+	box-shadow: none !important;
+	margin-right: 1rem;
+}

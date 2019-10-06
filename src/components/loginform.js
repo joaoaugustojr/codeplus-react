@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
 import Alert from 'react-s-alert';
-import { loginStart } from '../auth';
+import { loginStart } from '../services/auth';
 
 const Login = () => {
 	const [ estabelecimento_id, setEstabelecimento ] = useState('');
@@ -33,7 +33,6 @@ const Login = () => {
 
 		if (!error) {
 			await loginStart(estabelecimento_id, login, senha);
-			window.location.href = '/dashboard';
 		}
 	}
 

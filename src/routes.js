@@ -1,6 +1,6 @@
 import React from 'react';
 import { BrowserRouter, Route, Switch, Redirect } from 'react-router-dom';
-import { isAuthenticated } from './auth';
+import { isAuthenticated } from './services/auth';
 
 import Home from './pages/home';
 import Dashboard from './pages/dashboard';
