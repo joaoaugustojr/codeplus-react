@@ -19,7 +19,7 @@ export const loginStart = async (estabelecimento_id, login, senha) => {
 			Alert.error(res.data.message);
 		}
 	} catch (err) {
-		Alert.error('Ocorreu um erro inesperado ao fazer login: ' + err);
+		Alert.error('Ocorreu um erro inesperado ao fazer login: ' + err.message);
 	}
 };
 
@@ -33,10 +33,12 @@ export const isAuth = async () => {
 			localStorage.removeItem(TOKEN_KEY);
 			localStorage.setItem(AUTH_LOGIN, false);
 			document.location.reload();
+			Alert.error(res.data.message);
 		}
 	} catch (err) {
 		localStorage.removeItem(TOKEN_KEY);
 		localStorage.setItem(AUTH_LOGIN, false);
+		Alert.error(err.message);
 	}
 };
 
@@ -65,7 +67,6 @@ export const logoutStart = async () => {
 			localStorage.removeItem(TOKEN_KEY);
 			localStorage.removeItem(AUTH_LOGIN);
 			localStorage.removeItem(USER_LOGIN);
-			Alert.success(res.data.message);
 			window.location.href = '/';
 		} else {
 			Alert.error(res.data.message);

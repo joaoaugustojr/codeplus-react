@@ -1,18 +1,20 @@
 import React from 'react';
 import { getUser, isAuth, logoutStart } from '../services/auth';
 import { Confirm } from '../services/confirmDialog';
+import Alert from 'react-s-alert';
 
 const Dash = (props) => {
 	isAuth();
 
 	function logout() {
-		Confirm('Deseja Realmente Sair do CodePlus?', 'question', 'Sim', 'Não :)', () => {
+		Confirm('', 'Deseja Realmente Sair do CodePlus?', 'question', 'Sim', 'Não :)', () => {
 			logoutStart();
 		});
 	}
 
 	return (
 		<section className="container-fluid p-0 m-0">
+			<Alert effect="slide" position="top-right" timeout={5000} stack={{ limit: 3 }} />
 			<nav className="navbar navbar-expand-lg navBarBG">
 				<ion-icon class="text-white" name="menu" size="large" />
 				<div className="infoUser">

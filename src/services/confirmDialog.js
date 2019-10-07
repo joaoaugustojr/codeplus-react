@@ -1,6 +1,6 @@
 import Swal from 'sweetalert2';
 
-export const Confirm = (title, type, textConfirm, TextCancel, functionState) => {
+export const Confirm = (title, text, type, textConfirm, TextCancel, functionState) => {
 	const swalWithBootstrapButtons = Swal.mixin({
 		customClass: {
 			confirmButton: 'btn btn-confirm',
@@ -12,6 +12,7 @@ export const Confirm = (title, type, textConfirm, TextCancel, functionState) => 
 	swalWithBootstrapButtons
 		.fire({
 			title: title,
+			text: text,
 			type: type,
 			showCancelButton: true,
 			confirmButtonColor: '#cb62cc',
