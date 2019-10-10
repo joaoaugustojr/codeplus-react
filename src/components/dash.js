@@ -14,7 +14,7 @@ const Dash = (props) => {
 
 	return (
 		<section className="container-fluid p-0 m-0">
-			<Alert effect="slide" position="top-right" timeout={5000} stack={{ limit: 3 }} />
+			<Alert effect="slide" position="top-right" timeout={5000} stack={{ limit: 0 }} />
 			<nav className="navbar navbar-expand-lg navBarBG">
 				<ion-icon class="text-white" name="menu" size="large" />
 				<div className="infoUser">

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { getKeys } from 'eslint-visitor-keys';
+import { upperCaseValue } from '../services/helpers';
 
 const Table = (props) => {
 	const [ keys, setKeys ] = useState([]);
@@ -19,20 +19,20 @@ const Table = (props) => {
 		[ props.search ]
 	);
 
-	function getKeys() {
+	const getKeys = () => {
 		if (props.data.length > 0) {
 			setData(props.data);
 			setKeys(Object.keys(props.data[0]));
 		}
-	}
+	};
 
-	function filterData(query) {
+	const filterData = (query) => {
 		var result = props.data;
 
 		if (query.length > 0) {
 			result = result.filter(function(res) {
 				var text = JSON.stringify(res);
-				return text.toUpperCase().includes(query.toUpperCase());
+				return upperCaseValue(text).includes(upperCaseValue(query));
 			});
 			setData(result);
 		} else {
@@ -40,7 +40,7 @@ const Table = (props) => {
 				setData(props.data);
 			}
 		}
-	}
+	};
 
 	return (
 		<div>
@@ -72,12 +72,16 @@ const Table = (props) => {
 											</li>
 										)}
 										{props.edit && (
-											<li>
+											<li
+												data-toggle="modal"
+												data-target={props.editDataTarget}
+												onClick={() => props.functionEdit(value.id)}
+											>
 												<ion-icon class="btnEdit" name="create" />
 											</li>
 										)}
 										{props.delete && (
-											<li>
+											<li onClick={() => props.functionDelete(value.id)}>
 												<ion-icon class="btnRemove" name="trash" />
 											</li>
 										)}
