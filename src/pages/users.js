@@ -97,7 +97,6 @@ const Users = () => {
 	const deleteUsuario = (id) => {
 		Confirm('', 'Deseja excluir este registro?', 'warning', 'Sim', 'Não :)', async () => {
 			const res = await api.get('/users/delete/' + id);
-
 			if (res.data.response) {
 				getUsers();
 				Alert.success(res.data.message);
@@ -205,7 +204,7 @@ const Users = () => {
 					<div className="groupInput">
 						<input
 							className="form-control input-dash-text"
-							type="text"
+							type="email"
 							name="email"
 							placeholder="Email"
 							value={email}
@@ -275,7 +274,7 @@ const Users = () => {
 							onChange={onChange}
 						/>
 					</div>
-					<div className="groupInput">
+					{/* <div className="groupInput">
 						<input
 							className="form-control input-dash-text"
 							type="password"
@@ -284,7 +283,7 @@ const Users = () => {
 							value={senha}
 							onChange={onChange}
 						/>
-					</div>
+					</div> */}
 					<div className="groupInput selectElement">
 						<select
 							className="form-control inputSelect"

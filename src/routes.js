@@ -4,6 +4,7 @@ import { isAuthenticated } from './services/auth';
 
 import Home from './pages/home';
 import Dashboard from './pages/dashboard';
+import Estabelecimentos from './pages/estabelecimentos';
 import Usuarios from './pages/users';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
@@ -30,6 +31,7 @@ const Routes = () => {
 			<Switch>
 				<HomeLogin exact path="/" component={Home} />
 				<PrivateRoute exact path="/dashboard" component={Dashboard} />
+				<PrivateRoute exact path="/dashboard/estabelecimentos" component={Estabelecimentos} />
 				<PrivateRoute exact path="/dashboard/usuarios" component={Usuarios} />
 			</Switch>
 		</BrowserRouter>

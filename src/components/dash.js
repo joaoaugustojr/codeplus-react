@@ -76,6 +76,12 @@ const Dash = (props) => {
 						</a>
 					</li>
 					<li>
+						<a href="/dashboard/estabelecimentos">
+							<ion-icon class="text-white" name="business" />
+							<span>Estabelecimentos</span>
+						</a>
+					</li>
+					<li>
 						<a href="/dashboard/configuracoes">
 							<ion-icon class="text-white" name="md-cog" />
 							<span>Configurações</span>
