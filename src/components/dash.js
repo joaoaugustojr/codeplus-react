@@ -65,7 +65,7 @@ const Dash = (props) => {
 					</li>
 					<li>
 						<a href="/dashboard/importacao">
-							<ion-icon class="text-white" name="md-arrow-dropdown-circle" />
+							<ion-icon class="text-white" name="arrow-dropup-circle" />
 							<span>Importação</span>
 						</a>
 					</li>

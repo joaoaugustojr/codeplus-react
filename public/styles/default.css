@@ -1,3 +1,5 @@
 body {
 	background: #565656 !important;
+	text-rendering: optimizeLegibility;
+	-webkit-font-smoothing: antialiased;
 }

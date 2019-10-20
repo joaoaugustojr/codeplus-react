@@ -6,6 +6,7 @@ import Home from './pages/home';
 import Dashboard from './pages/dashboard';
 import Estabelecimentos from './pages/estabelecimentos';
 import Usuarios from './pages/users';
+import Importacao from './pages/importacao';
 
 const PrivateRoute = ({ component: Component, ...rest }) => {
 	return (
@@ -31,8 +32,9 @@ const Routes = () => {
 			<Switch>
 				<HomeLogin exact path="/" component={Home} />
 				<PrivateRoute exact path="/dashboard" component={Dashboard} />
-				<PrivateRoute exact path="/dashboard/estabelecimentos" component={Estabelecimentos} />
 				<PrivateRoute exact path="/dashboard/usuarios" component={Usuarios} />
+				<PrivateRoute exact path="/dashboard/estabelecimentos" component={Estabelecimentos} />
+				<PrivateRoute exact path="/dashboard/importacao" component={Importacao} />
 			</Switch>
 		</BrowserRouter>
 	);

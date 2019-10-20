@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { upperCaseValue } from '../services/helpers';
+import '../css/table.css';
 
 const Table = (props) => {
 	const [ keys, setKeys ] = useState([]);

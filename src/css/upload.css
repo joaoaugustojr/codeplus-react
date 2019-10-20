@@ -1,0 +1,119 @@
+section.bodyUpload {
+	position: relative;
+	height: 70%;
+}
+
+.content-upload {
+	width: 50%;
+	background: #fbfbfb;
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	transform: translate(-50%, -50%);
+	padding: 10px;
+}
+
+.header-upload {
+	text-align: center;
+	color: #7f7f7f;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #d89ed3;
+	margin-top: 15px;
+}
+
+.header-upload > h5 {
+	font-weight: 400;
+}
+
+#drag-upload {
+	width: 40%;
+	text-align: center;
+	padding: 15% 0;
+	border-style: dashed;
+	border-color: #d89ed3;
+	border-width: 2px;
+	cursor: pointer;
+	border-radius: 4px;
+	transition: height 0.2s ease;
+}
+
+#drag-upload > p {
+	margin: 0;
+}
+
+.drag-upload-isDrag {
+	background: red;
+}
+
+.drag-upload-isReject {
+	background: blue !important;
+}
+
+.list-upload {
+	width: 60%;
+	padding: 0 20px;
+	overflow-y: auto;
+	height: 254px;
+}
+
+.row-upload {
+	margin-top: 2rem;
+	margin-bottom: 30px;
+}
+
+.icon-upload {
+	font-size: 2rem;
+	color: #d89ed3;
+}
+
+.list-upload > ul {
+	list-style: none;
+	padding: 0;
+	margin: 0;
+}
+
+li.item-upload > p {
+	margin: 0;
+	width: 90%;
+}
+
+ion-icon.icon-upload-list-alert.md.hydrated {
+	font-size: 24px;
+	color: #f17878;
+}
+
+ion-icon.icon-upload-list-check.md.hydrated {
+	font-size: 24px;
+	color: #22bd19;
+}
+
+li.item-upload {
+	padding: 10px 0;
+	border-bottom-style: solid;
+	border-bottom-width: 1px;
+	border-bottom-color: #d5d5d5;
+	margin-bottom: 8px;
+}
+
+.action-upload {
+	padding: 10px 0;
+	border-top-style: solid;
+	border-top-width: 1px;
+	border-top-color: #cb62cc;
+	text-align: initial;
+	margin-top: 20px;
+}
+
+.action-upload > button {
+	border: none;
+	height: 38px;
+	padding: 0 10px;
+	margin-right: 2rem;
+	background: #cb62cc;
+	color: white;
+}
+
+#upload-or {
+	font-size: 11px;
+}

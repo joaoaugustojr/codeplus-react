@@ -274,7 +274,7 @@ const Users = () => {
 							onChange={onChange}
 						/>
 					</div>
-					{/* <div className="groupInput">
+					<div className="groupInput">
 						<input
 							className="form-control input-dash-text"
 							type="password"
@@ -283,7 +283,7 @@ const Users = () => {
 							value={senha}
 							onChange={onChange}
 						/>
-					</div> */}
+					</div>
 					<div className="groupInput selectElement">
 						<select
 							className="form-control inputSelect"
