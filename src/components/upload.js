@@ -1,55 +1,122 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState } from 'react';
 import Dropzone from 'react-dropzone';
+import { CircularProgressbar } from 'react-circular-progressbar';
+import { uniqueId } from 'lodash';
+import { shortText } from '../services/helpers';
+import api from '../services/api';
+import Alert from 'react-s-alert';
+import 'react-circular-progressbar/dist/styles.css';
 
 const Upload = () => {
+	const [ uploadedFiles, setUploadFiles ] = useState([]);
+
+	const onUpload = (files) => {
+		const uploadedFilesObject = files.map((file) => ({
+			file,
+			id: uniqueId(),
+			name: file.name,
+			progress: 0,
+			uploaded: false,
+			error: false
+		}));
+
+		setUploadFiles(uploadedFiles.concat(uploadedFilesObject));
+	};
+
+	const getMessage = (isDragActive, isDragReject) => {
+		if (!isDragActive) {
+			return (
+				<div>
+					<p>Arraste os Arquivos Aqui</p>
+					<p id="upload-or">ou Clique para selecionar</p>
+				</div>
+			);
+		}
+
+		if (isDragActive) {
+			return <p>Solte os Arquivos Aqui</p>;
+		}
+	};
+
+	const iniciaUpload = () => {
+		var auxUpdateFile = uploadedFiles;
+
+		auxUpdateFile.forEach((file) => {
+			const form = new FormData();
+			form.append('file', file.file);
+			api
+				.post('/upload', form, {
+					onUploadProgress: (e) => {
+						const progress = parseInt(Math.round(e.loaded * 100 / e.total));
+						setUploadFiles((prev) => updateFile(file.id, { progress }));
+					}
+				})
+				.then((response) => {
+					setUploadFiles((prev) => updateFile(file.id, { uploaded: true }));
+				})
+				.catch((error) => {
+					setUploadFiles((prev) => updateFile(file.id, { error: true }));
+				});
+		});
+	};
+
+	const updateFile = (id, data) => {
+		var auxUpdateFile = uploadedFiles;
+
+		let auxUpdate = auxUpdateFile.map((file) => {
+			return id === file.id ? { ...file, ...data } : { ...file, ...file };
+		});
+
+		return auxUpdate;
+	};
+
 	return (
 		<div className="content-upload">
 			<div className="header-upload">
 				<h5>Importar Arquivos</h5>
 			</div>
 			<section className="row-upload d-flex">
-				<Dropzone accept="image/*" onDropAccepted={() => {}}>
+				<Dropzone accept="image/*" onDropAccepted={onUpload}>
 					{({ getRootProps, getInputProps, isDragActive, isDragReject }) => (
 						<div id="drag-upload" className={isDragActive ? 'drag-upload-isDrag' : ''} {...getRootProps()}>
 							<input {...getInputProps()} />
 							<ion-icon class="icon-upload" name="arrow-dropup-circle" />
-							<p>Arraste os Arquivos Aqui</p>
-							<p id="upload-or">ou Clique para selecionar</p>
+							{getMessage(isDragActive, isDragReject)}
 						</div>
 					)}
 				</Dropzone>
 
 				<div className="list-upload">
 					<ul>
-						<li className="item-upload d-flex">
-							<p className="txt-upload">nome arquivo.txt</p>
-							<ion-icon class="icon-upload-list-check" name="checkmark-circle" />
-						</li>
-						<li className="item-upload d-flex">
-							<p>nome arquivo produto.csv</p>
-							<ion-icon class="icon-upload-list-check" name="checkmark-circle" />
-						</li>
-						<li className="item-upload d-flex">
-							<p>nome arquivo produto.xls</p>
-							<ion-icon class="icon-upload-list-alert" name="alert" />
-						</li>
-						<li className="item-upload d-flex">
-							<p>nome arquivo produto gran...</p>
-							<ion-icon class="icon-upload-list-alert" name="alert" />
-						</li>
-						<li className="item-upload d-flex">
-							<p>nome arquivo produto gran...</p>
-							<ion-icon class="icon-upload-list-check" name="checkmark-circle" />
-						</li>
-						<li className="item-upload d-flex">
-							<p>nome arquivo produto.xls</p>
-							<ion-icon class="icon-upload-list-check" name="checkmark-circle" />
-						</li>
+						{uploadedFiles.length > 0 &&
+							uploadedFiles.map((file) => (
+								<li className="item-upload d-flex" key={file.id} id={file.id}>
+									<p className="txt-upload">{shortText(file.name, 40, '...')}</p>
+									{!file.uploaded &&
+									!file.error && (
+										<CircularProgressbar
+											key={file.id}
+											styles={{
+												root: { width: 22 },
+												path: { stroke: '#7159c1' }
+											}}
+											strokeWidth={15}
+											value={file.progress}
+										/>
+									)}
+									{file.uploaded && (
+										<ion-icon class="icon-upload-list-check" name="checkmark-circle" />
+									)}
+									{file.erro && <ion-icon class="icon-upload-list-alert" name="alert" />}
+								</li>
+							))}
 					</ul>
 				</div>
 			</section>
 			<div className="action-upload">
-				<button type="button">Iniciar Importação</button>
+				<button type="button" onClick={iniciaUpload}>
+					Iniciar Importação
+				</button>
 			</div>
 		</div>
 	);

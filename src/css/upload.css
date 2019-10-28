@@ -38,16 +38,13 @@ section.bodyUpload {
 	transition: height 0.2s ease;
 }
 
-#drag-upload > p {
+#drag-upload > div > p {
 	margin: 0;
 }
 
 .drag-upload-isDrag {
-	background: red;
-}
-
-.drag-upload-isReject {
-	background: blue !important;
+	border-color: #c5b5c4 !important;
+	background: #f8f8f8;
 }
 
 .list-upload {
@@ -67,6 +64,10 @@ section.bodyUpload {
 	color: #d89ed3;
 }
 
+#upload-error {
+	color: #f17878;
+}
+
 .list-upload > ul {
 	list-style: none;
 	padding: 0;
@@ -78,13 +79,13 @@ li.item-upload > p {
 	width: 90%;
 }
 
-ion-icon.icon-upload-list-alert.md.hydrated {
-	font-size: 24px;
+ion-icon.icon-upload-list-alert {
+	font-size: 23px;
 	color: #f17878;
 }
 
-ion-icon.icon-upload-list-check.md.hydrated {
-	font-size: 24px;
+ion-icon.icon-upload-list-check {
+	font-size: 23px;
 	color: #22bd19;
 }
 
@@ -115,5 +116,9 @@ li.item-upload {
 }
 
 #upload-or {
+	font-size: 11px;
+}
+
+.txt-upload {
 	font-size: 11px;
 }
