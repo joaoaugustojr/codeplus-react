@@ -178,7 +178,7 @@ const Users = () => {
 				addAction={addUsuario}
 			>
 				<form className="d-inline-bloc basicInput" id="addUserForm">
-					<input className="form-control input-dash-text" type="hidden" name="estabelecimento_id" value={1} />
+					{/* <input className="form-control input-dash-text" type="hidden" name="estabelecimento_id" value={1} /> */}
 
 					<div className="groupInput">
 						<input
@@ -241,7 +241,6 @@ const Users = () => {
 				editAction={editUsuario}
 			>
 				<form className="d-inline-bloc basicInput" id="editUserForm">
-					<input className="form-control input-dash-text" type="hidden" name="estabelecimento_id" value={1} />
 					<input className="form-control input-dash-text" type="hidden" name="id" value={id} />
 
 					<div className="groupInput">
