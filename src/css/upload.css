@@ -1,16 +1,15 @@
-section.bodyUpload {
+.bodyUpload {
 	position: relative;
-	height: 70%;
+	height: auto;
+	display: flex !important;
+	justify-content: center;
 }
 
 .content-upload {
 	width: 50%;
 	background: #fbfbfb;
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translate(-50%, -50%);
 	padding: 10px;
+	margin-top: 30px;
 }
 
 .header-upload {
@@ -106,19 +105,34 @@ li.item-upload {
 	margin-top: 20px;
 }
 
-.action-upload > button {
-	border: none;
-	height: 38px;
-	padding: 0 10px;
-	margin-right: 2rem;
-	background: #cb62cc;
-	color: white;
-}
-
 #upload-or {
 	font-size: 11px;
 }
 
 .txt-upload {
 	font-size: 11px;
+}
+
+ul.listItens {
+	padding: 0;
+	margin: 0;
+	margin-bottom: 30px;
+}
+
+ul.listItens > li {
+	border: none;
+	text-transform: capitalize;
+}
+
+.react-tabs__tab:focus {
+	box-shadow: none !important;
+	border-color: initial !important;
+	outline: none !important;
+}
+
+.react-tabs__tab--selected {
+	border-color: #c6c6c6 !important;
+	border-bottom-style: solid !important;
+	border-bottom-width: 7px !important;
+	border-radius: initial !important;
 }

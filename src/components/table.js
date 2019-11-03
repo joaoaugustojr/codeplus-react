@@ -44,7 +44,7 @@ const Table = (props) => {
 	};
 
 	return (
-		<div>
+		<div className="w-100">
 			<table className="table table-striped table-borderless table-hover table-sm">
 				<thead>
 					<tr>

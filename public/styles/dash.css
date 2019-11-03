@@ -178,3 +178,23 @@ select {
 	box-shadow: none !important;
 	margin-right: 1rem;
 }
+
+.btn-green {
+	border: none;
+	height: 38px;
+	padding: 0 10px;
+	margin-right: 1rem;
+	background: #0db3a1;
+	color: white;
+	cursor: pointer;
+}
+
+.btn-code {
+	border: none;
+	height: 38px;
+	padding: 0 10px;
+	margin-right: 1rem;
+	background: #cb62cc;
+	color: white;
+	cursor: pointer;
+}

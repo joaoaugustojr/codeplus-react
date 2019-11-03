@@ -7,7 +7,7 @@ import api from '../services/api';
 import Alert from 'react-s-alert';
 import 'react-circular-progressbar/dist/styles.css';
 
-const Upload = () => {
+const Upload = (props) => {
 	const [ uploadedFiles, setUploadFiles ] = useState([]);
 
 	const onUpload = (files) => {
@@ -34,7 +34,7 @@ const Upload = () => {
 		}
 
 		if (isDragActive) {
-			return <p>Solte os Arquivos Aqui</p>;
+			return <p>Solte os Arquivos Aqui em ".txt" ou ".csv"</p>;
 		}
 	};
 
@@ -48,11 +48,12 @@ const Upload = () => {
 				.post('/upload', form, {
 					onUploadProgress: (e) => {
 						const progress = parseInt(Math.round(e.loaded * 100 / e.total));
-						setUploadFiles((prev) => updateFile(file.id, { progress }));
+						setUploadFiles(updateFile(file.id, { progress }));
 					}
 				})
 				.then((response) => {
 					setUploadFiles((prev) => updateFile(file.id, { uploaded: true }));
+					props.functionAtualiza();
 				})
 				.catch((error) => {
 					setUploadFiles((prev) => updateFile(file.id, { error: true }));
@@ -64,10 +65,14 @@ const Upload = () => {
 		var auxUpdateFile = uploadedFiles;
 
 		let auxUpdate = auxUpdateFile.map((file) => {
-			return id === file.id ? { ...file, ...data } : { ...file, ...file };
+			return { ...file, ...data };
 		});
 
 		return auxUpdate;
+	};
+
+	const limparLista = () => {
+		setUploadFiles([]);
 	};
 
 	return (
@@ -76,7 +81,7 @@ const Upload = () => {
 				<h5>Importar Arquivos</h5>
 			</div>
 			<section className="row-upload d-flex">
-				<Dropzone accept="image/*" onDropAccepted={onUpload}>
+				<Dropzone accept=".txt, .csv, .xls" onDropAccepted={onUpload}>
 					{({ getRootProps, getInputProps, isDragActive, isDragReject }) => (
 						<div id="drag-upload" className={isDragActive ? 'drag-upload-isDrag' : ''} {...getRootProps()}>
 							<input {...getInputProps()} />
@@ -114,8 +119,11 @@ const Upload = () => {
 				</div>
 			</section>
 			<div className="action-upload">
-				<button type="button" onClick={iniciaUpload}>
+				<button type="button" className="btn-code" onClick={iniciaUpload}>
 					Iniciar Importação
+				</button>
+				<button type="button" className="btn-green" onClick={limparLista}>
+					Nova Importação
 				</button>
 			</div>
 		</div>
