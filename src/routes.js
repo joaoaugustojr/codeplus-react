@@ -8,6 +8,28 @@ import Estabelecimentos from './pages/estabelecimentos';
 import Usuarios from './pages/users';
 import Importacao from './pages/importacao';
 
+import { createMuiTheme, MuiThemeProvider } from '@material-ui/core/styles';
+
+const theme = createMuiTheme({
+	palette: {
+		primary: {
+			light: '#c852ca',
+			main: '#c852ca',
+			dark: '#c852ca',
+			contrastText: '#fff'
+		},
+		secondary: {
+			light: '#ff7961',
+			main: '#f44336',
+			dark: '#ba000d',
+			contrastText: '#000'
+		},
+		typography: {
+			fontSize: 12
+		}
+	}
+});
+
 const PrivateRoute = ({ component: Component, ...rest }) => {
 	return (
 		<Route
@@ -28,15 +50,17 @@ const HomeLogin = ({ component: Component, ...rest }) => {
 
 const Routes = () => {
 	return (
-		<BrowserRouter>
-			<Switch>
-				<HomeLogin exact path="/" component={Home} />
-				<PrivateRoute exact path="/dashboard" component={Dashboard} />
-				<PrivateRoute exact path="/dashboard/usuarios" component={Usuarios} />
-				<PrivateRoute exact path="/dashboard/estabelecimentos" component={Estabelecimentos} />
-				<PrivateRoute exact path="/dashboard/importacao" component={Importacao} />
-			</Switch>
-		</BrowserRouter>
+		<MuiThemeProvider theme={theme}>
+			<BrowserRouter>
+				<Switch>
+					<HomeLogin exact path="/" component={Home} />
+					<PrivateRoute exact path="/dashboard" component={Dashboard} />
+					<PrivateRoute exact path="/dashboard/usuarios" component={Usuarios} />
+					<PrivateRoute exact path="/dashboard/estabelecimentos" component={Estabelecimentos} />
+					<PrivateRoute exact path="/dashboard/importacao" component={Importacao} />
+				</Switch>
+			</BrowserRouter>
+		</MuiThemeProvider>
 	);
 };
 

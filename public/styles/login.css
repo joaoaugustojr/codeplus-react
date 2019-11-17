@@ -1,13 +1,13 @@
-body {
-	background: #565656 !important;
-}
-
 .loginBox {
 	width: 380px;
 	position: absolute;
 	top: 50%;
 	left: 50%;
 	transform: translate(-50%, -50%);
+}
+
+body {
+	background: #3a3a3a !important;
 }
 
 .codePlusLogo {

@@ -10,8 +10,8 @@
 }
 
 .infoUser {
-	justify-content: space-between;
-	display: inline-flex;
+	display: flex;
+	width: 100%;
 }
 
 .infoUser > ul {
@@ -20,6 +20,7 @@
 	margin: 0;
 	padding: 0;
 	margin-right: 10px;
+	width: 100%;
 }
 
 .infoUser > ul > li > p {
@@ -45,7 +46,7 @@
 	list-style: none;
 }
 
-.menu > img {
+.menuimg {
 	width: 50%;
 	margin: 0 auto;
 	margin-top: 20px;
@@ -197,4 +198,17 @@ select {
 	background: #cb62cc;
 	color: white;
 	cursor: pointer;
+}
+
+.main-content {
+	background: white;
+	min-height: 100vh;
+}
+
+.MuiTabs-flexContainer {
+	justify-content: center;
+}
+
+button:focus {
+	outline: none !important;
 }

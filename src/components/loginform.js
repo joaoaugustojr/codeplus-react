@@ -36,6 +36,12 @@ const Login = () => {
 		}
 	}
 
+	const keyValidaUsuario = (ev) => {
+		if (ev.key === 'Enter') {
+			validarUsuario();
+		}
+	};
+
 	return (
 		<div className="loginBox bg-white text-center">
 			<div className="codePlusLogo text-center d-inline-block justify-content-center">
@@ -54,6 +60,7 @@ const Login = () => {
 						name="estabelecimento_id"
 						value={estabelecimento_id}
 						onChange={onChange}
+						onKeyPress={keyValidaUsuario}
 						placeholder="Código do Estabelecimento"
 					/>
 				</div>
@@ -61,13 +68,27 @@ const Login = () => {
 					<div className="iconLogin">
 						<ion-icon name="person" />
 					</div>
-					<input type="text" name="login" value={login} onChange={onChange} placeholder="Usuário" />
+					<input
+						type="text"
+						name="login"
+						value={login}
+						onChange={onChange}
+						onKeyPress={keyValidaUsuario}
+						placeholder="Usuário"
+					/>
 				</div>
 				<div className="groupInput">
 					<div className="iconLogin">
 						<ion-icon name="key" />
 					</div>
-					<input type="password" name="senha" value={senha} onChange={onChange} placeholder="Senha" />
+					<input
+						type="password"
+						name="senha"
+						value={senha}
+						onChange={onChange}
+						onKeyPress={keyValidaUsuario}
+						placeholder="Senha"
+					/>
 				</div>
 			</form>
 
